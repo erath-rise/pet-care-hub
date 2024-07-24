@@ -1,4 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
-npm run start:api &
-npm run start:socket
+
+cd /app/api && npm start &
+
+
+cd /app/socket && npm start &
+
+
+wait
