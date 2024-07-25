@@ -5,7 +5,9 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
+    "postinstall": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "prisma generate && tsc",
     "start": "node app.js"
   },
   "keywords": [],
