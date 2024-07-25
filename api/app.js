@@ -11,17 +11,27 @@ import messageRoute from "./routes/message.route.js";
 const app = express();
 
 // 设置CORS头
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   res.setHeader('Access-Control-Allow-Credentials', true);
+//   next();
+// });
+app.use(cors({ 
+  origin: process.env.CLIENT_URL, 
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
+  allowedHeaders: ['X-Requested-With', 'content-type']
+}));
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+// app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
@@ -30,6 +40,7 @@ app.use("/api/test", testRoute);
 app.use("/api/chats", chatRoute);
 app.use("/api/messages", messageRoute);
 
-app.listen(8800, () => {
-  console.log("Server is running!");
+const PORT = process.env.PORT || 8800;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
