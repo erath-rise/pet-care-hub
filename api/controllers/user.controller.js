@@ -134,11 +134,10 @@ export const profilePosts = async (req, res) => {
   }
 };
 
-router.get('/notification', verifyToken, getNotificationNumber);
 
 export const getNotificationNumber = async (req, res) => {
   // const tokenUserId = req.userId;
-  const tokenUserId = req.body.userId || req.query.userId; 
+  const tokenUserId = req.body.userId || req.query.userId;
   console.log('User ID from token:', req.userId);
   try {
     const number = await prisma.chat.count({
