@@ -17,7 +17,7 @@ function SinglePage() {
   const [showChat, setShowChat] = useState(false);
   const [chats, setChats] = useState([]);
 
-  if (!post || !post.postDetail) {
+  if (!post) {
     return <div>Loading... or Post not found</div>;
   }
 
@@ -109,53 +109,6 @@ function SinglePage() {
       </div>
       <div className="features">
         <div className="wrapper">
-          {/* <p className="title">General</p>
-          <div className="listVertical">
-            <div className="feature">
-              <img src="/utility.png" alt="" />
-              <div className="featureText">
-                <span>Utilities</span>
-                {post.postDetail?.utilities === "owner" ? (
-                  <p>Owner is responsible</p>
-                ) : (
-                  <p>Tenant is responsible</p>
-                )}
-              </div>
-            </div> */}
-          {/* <div className="feature">
-              <img src="/pet.png" alt="" />
-              <div className="featureText">
-                <span>Pet Policy</span>
-                {post.postDetail?.pet === "allowed" ? (
-                  <p>Pets Allowed</p>
-                ) : (
-                  <p>Pets not Allowed</p>
-                )}
-              </div>
-            </div> */}
-          {/* <div className="feature">
-              <img src="/fee.png" alt="" />
-              <div className="featureText">
-                <span>Income Policy</span>
-                <p>{post.postDetail?.income}</p>
-              </div>
-            </div>
-          </div> */}
-          {/* <p className="title">Sizes</p>
-          <div className="sizes">
-            <div className="size">
-              <img src="/size.png" alt="" />
-              <span>{post.postDetail?.size} sqft</span>
-            </div>
-            <div className="size">
-              <img src="/bed.png" alt="" />
-              <span>{post.bedroom} beds</span>
-            </div>
-            <div className="size">
-              <img src="/bath.png" alt="" />
-              <span>{post.bathroom} bathroom</span>
-            </div>
-          </div> */}
           <p className="title mt-5">Location</p>
           <div className="mapContainer">
             <Map items={[post]} />
