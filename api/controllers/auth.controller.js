@@ -23,6 +23,7 @@ export const register = async (req, res) => {
 
     console.log(newUser);
 
+
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
     console.log(err);
@@ -65,15 +66,18 @@ export const login = async (req, res) => {
 
     const { password: userPassword, ...userInfo } = user;
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      maxAge: age, 
-      // domain: 'https://pet-care-hub.vercel.app' // 设置为您的域名
-    })
+    res
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'none',
+        maxAge: age,
+      })
       .status(200)
       .json(userInfo);
+
+    console.log('Cookies:', req.cookies);
+    console.log('Headers:', req.headers);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to login!" });

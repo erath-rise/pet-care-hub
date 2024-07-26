@@ -27,7 +27,9 @@ function Login() {
         password,
       });
 
-      updateUser(res.data)
+      localStorage.setItem("isLoggedIn", "true");
+
+      updateUser(res.data);
 
       navigate("/");
     } catch (err) {
