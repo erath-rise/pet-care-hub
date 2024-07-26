@@ -27,10 +27,13 @@ function Login() {
         password,
       });
 
+      localStorage.setItem('isLoggedIn', 'true');
+
       updateUser({ ...res.data, isLoggedIn: true })
 
       navigate("/");
     } catch (err) {
+      console.error('Login failed:', error);
       setError(err.response.data.message);
     } finally {
       setIsLoading(false);
