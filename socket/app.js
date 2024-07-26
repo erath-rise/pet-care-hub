@@ -45,5 +45,5 @@ const PORT = process.env.PORT || 4000;
 
 
 io.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Socket Server running on port ${PORT}`);
 });
