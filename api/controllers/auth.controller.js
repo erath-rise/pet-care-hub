@@ -67,10 +67,10 @@ export const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // 在生产环境中使用secure
+      secure: true,
       sameSite: 'strict',
-      maxAge: age,
-      domain: 'https://pet-care-hub.vercel.app' // 设置为您的域名
+      maxAge: age, 
+      // domain: 'https://pet-care-hub.vercel.app' // 设置为您的域名
     })
       .status(200)
       .json(userInfo);
