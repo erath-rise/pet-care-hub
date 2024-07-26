@@ -13,8 +13,16 @@ import http from "http";
 const app = express();
 const server = http.createServer(app);
 
+
+// const corsOptions = {
+//   origin: 'https://pet-care-hub.vercel.app', // 允许的前端 URL
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true, // 如果需要支持 cookie
+// };
+
+
 app.use(cors({
-  origin: process.env.CLIENT_URL,
+  origin: "https://pet-care-hub.vercel.app",
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['X-Requested-With', 'content-type']
