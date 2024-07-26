@@ -7,8 +7,9 @@ import { AuthContext } from "../../context/AuthContext";
 function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
-  const {updateUser} = useContext(AuthContext)
+  const { updateUser } = useContext(AuthContext)
 
   const navigate = useNavigate();
 
@@ -27,11 +28,37 @@ function Login() {
         password,
       });
 
-      updateUser(res.data)
+      // 检查响应中是否包含token
+      if (res.data.token) {
+        // 将token存储在localStorage中
+        localStorage.setItem('token', res.data.token);
 
-      navigate("/");
+        // 设置默认的Authorization header
+        apiRequest.defaults.headers.common['Authorization'] = `Bearer ${res.data.token}`;
+      } else {
+        console.warn('Token not found in the response');
+      }
+
+      // 更新用户状态
+      updateUser(res.data.user);
+
+      // 显示成功消息
+      setSuccessMessage("Login successful!");
+
+      // 延迟导航，让用户看到成功消息
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+
     } catch (err) {
-      setError(err.response.data.message);
+      if (err.response) {
+        setError(err.response.data.message || "An error occurred during login");
+      } else if (err.request) {
+        setError("No response received from the server. Please try again.");
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
+      console.error("Login error:", err);
     } finally {
       setIsLoading(false);
     }
