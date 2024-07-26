@@ -14,19 +14,15 @@ const app = express();
 const server = http.createServer(app);
 
 
-// const corsOptions = {
-//   origin: 'https://pet-care-hub.vercel.app', // 允许的前端 URL
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true, // 如果需要支持 cookie
-// };
+// 使用 CORS 中间件
+const corsOptions = {
+  origin: 'https://pet-care-hub.vercel.app', // 确保没有尾随斜杠
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // 如果需要支持 cookie
+};
 
+app.use(cors(corsOptions));
 
-app.use(cors({
-  origin: "https://pet-care-hub.vercel.app",
-  credentials: true,
-  methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
-  allowedHeaders: ['X-Requested-With', 'content-type']
-}));
 
 // app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use(express.json());
