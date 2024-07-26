@@ -9,29 +9,12 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    if (currentUser) {
-      const SOCKET_URL = "https://pet-care-hub.onrender.com";
-      const newSocket = io(SOCKET_URL, {
-        withCredentials: true,
-      });
+    setSocket(io("https://pet-care-hub.onrender.com"));
+  }, []);
 
-      newSocket.on("connect", () => {
-        console.log("Socket connected");
-        newSocket.emit("newUser", currentUser.id);
-      });
-
-      newSocket.on("connect_error", (error) => {
-        console.error("Socket connection error:", error);
-        // 这里可以添加用户通知逻辑
-      });
-
-      setSocket(newSocket);
-
-      return () => {
-        newSocket.disconnect();
-      };
-    }
-  }, [currentUser]);
+  useEffect(() => {
+  currentUser && socket?.emit("newUser", currentUser.id);
+  }, [currentUser, socket]);
 
   return (
     <SocketContext.Provider value={{ socket }}>
