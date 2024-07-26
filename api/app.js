@@ -7,19 +7,14 @@ import testRoute from "./routes/test.route.js";
 import userRoute from "./routes/user.route.js";
 import chatRoute from "./routes/chat.route.js";
 import messageRoute from "./routes/message.route.js";
+import { Server } from "socket.io";
+import http from "http";
 
 const app = express();
+const server = http.createServer(app);
 
-// 设置CORS头
-// app.use((req, res, next) => {
-//   res.setHeader('Access-Control-Allow-Origin', '*');
-//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-//   res.setHeader('Access-Control-Allow-Credentials', true);
-//   next();
-// });
-app.use(cors({ 
-  origin: process.env.CLIENT_URL, 
+app.use(cors({
+  origin: process.env.CLIENT_URL,
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['X-Requested-With', 'content-type']
@@ -39,6 +34,44 @@ app.use("/api/posts", postRoute);
 app.use("/api/test", testRoute);
 app.use("/api/chats", chatRoute);
 app.use("/api/messages", messageRoute);
+
+const io = new Server({
+  cors: {
+    origin: "https://pet-care-hub.vercel.app",
+  },
+});
+
+let onlineUser = [];
+
+const addUser = (userId, socketId) => {
+  const userExits = onlineUser.find((user) => user.userId === userId);
+  if (!userExits) {
+    onlineUser.push({ userId, socketId });
+  }
+};
+
+const removeUser = (socketId) => {
+  onlineUser = onlineUser.filter((user) => user.socketId !== socketId);
+};
+
+const getUser = (userId) => {
+  return onlineUser.find((user) => user.userId === userId);
+};
+
+io.on("connection", (socket) => {
+  socket.on("newUser", (userId) => {
+    addUser(userId, socket.id);
+  });
+
+  socket.on("sendMessage", ({ receiverId, data }) => {
+    const receiver = getUser(receiverId);
+    io.to(receiver.socketId).emit("getMessage", data);
+  });
+
+  socket.on("disconnect", () => {
+    removeUser(socket.id);
+  });
+});
 
 const PORT = process.env.PORT || 8800;
 app.listen(PORT, () => {
