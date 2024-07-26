@@ -63,15 +63,6 @@ export const login = async (req, res) => {
       { expiresIn: age }
     );
 
-    res.json({
-      usr: {
-        id: user.id,
-        username: user.username,
-        email: user.email,
-      },
-      token,
-      });
-
     const { password: userPassword, ...userInfo } = user;
 
     res.cookie("token", token, {

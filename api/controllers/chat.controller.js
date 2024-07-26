@@ -73,6 +73,8 @@ export const getChat = async (req, res) => {
 };
 
 
+
+
 export const addChat = async (req, res) => {
   const tokenUserId = req.userId;
   const receiverId = req.body.receiverId;

@@ -16,8 +16,6 @@ function ProfilePage() {
   const handleLogout = async () => {
     try {
       await apiRequest.post("/auth/logout");
-      localStorage.removeItem('token');
-      updateUser(null);
       updateUser(null);
       navigate("/");
     } catch (err) {
@@ -81,7 +79,7 @@ function ProfilePage() {
               resolve={data.chatResponse}
               errorElement={<p>Error loading chats!</p>}
             >
-              {(chatResponse) => <Chat chats={chatResponse.data} />}
+              {(chatResponse) => <Chat chats={chatResponse.data}/>}
             </Await>
           </Suspense>
         </div>
