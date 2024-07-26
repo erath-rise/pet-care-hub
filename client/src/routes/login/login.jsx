@@ -7,7 +7,6 @@ import { AuthContext } from "../../context/AuthContext";
 function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
 
   const { updateUser } = useContext(AuthContext)
 
@@ -43,7 +42,7 @@ function Login() {
       updateUser(res.data.user);
 
       // 显示成功消息
-      setSuccessMessage("Login successful!");
+      console.log(res.data.message);
 
       // 延迟导航，让用户看到成功消息
       setTimeout(() => {

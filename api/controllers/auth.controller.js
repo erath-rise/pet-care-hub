@@ -51,30 +51,31 @@ export const login = async (req, res) => {
 
     // GENERATE COOKIE TOKEN AND SEND TO THE USER
 
-    // res.setHeader("Set-Cookie", "test=" + "myValue").json("success")
-    const age = 1000 * 60 * 60 * 24 * 7;
-
+    // GENERATE JWT TOKEN
+    const age = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
     const token = jwt.sign(
       {
         id: user.id,
-        isAdmin: false,
+        isAdmin: user.isAdmin || false, // 假设用户模型中有 isAdmin 字段
       },
       process.env.JWT_SECRET_KEY,
-      { expiresIn: age }
+      { expiresIn: '7d' } // 使用字符串格式，更易读
     );
 
     const { password: userPassword, ...userInfo } = user;
 
+    // 设置 cookie 并发送响应
     res
       .cookie("token", token, {
         httpOnly: true,
-        // secure:true,
+        secure: process.env.NODE_ENV === 'production', // 只在生产环境使用 secure
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 根据环境调整
         maxAge: age,
       })
       .status(200)
-      .json(userInfo);
+      .json({ user: userInfo, message: "Login successful" });
   } catch (err) {
-    console.log(err);
+    console.error("Login error:", err);
     res.status(500).json({ message: "Failed to login!" });
   }
 };
