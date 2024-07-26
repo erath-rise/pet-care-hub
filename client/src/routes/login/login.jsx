@@ -27,9 +27,11 @@ function Login() {
         password,
       });
 
-      localStorage.setItem('isLoggedIn', 'true');
+      // localStorage.setItem('isLoggedIn', 'true');
+      localStorage.setItem('token', res.data.token);
+      updateUser(res.data.user);
 
-      updateUser({ ...res.data, isLoggedIn: true })
+      // updateUser({ ...res.data, isLoggedIn: true })
 
       navigate("/");
     } catch (err) {
