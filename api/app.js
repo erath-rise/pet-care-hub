@@ -43,4 +43,10 @@ app.use("/api/messages", messageRoute);
 const PORT = process.env.PORT || 8800;
 app.listen(PORT, () => {
   console.log(`API Server is running on port ${PORT}`);
+}).on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use`);
+  } else {
+    console.error(err);
+  }
 });
