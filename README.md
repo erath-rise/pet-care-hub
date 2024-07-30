@@ -1,9 +1,9 @@
 # PetCareHub
 
 PetCareHub is a pet care platform designed to connect pet owners with reliable pet caretakers. 
-•  Backend: Node.js with Express.js framework, MongoDB for database, JWT for authentication 
-•  Frontend: React for UI development, Redux for state management, Axios for API calls 
-•  Additional Tools: Git for version control, Render for backend deployment, Vercel for frontend deployment
+- Backend: Node.js with Express.js framework, MongoDB for database, JWT for authentication 
+- Frontend: React for UI development, Redux for state management, Axios for API calls 
+- Additional Tools: Git for version control, Render for backend deployment, Vercel for frontend deployment
 
 
 
