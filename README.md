@@ -2,7 +2,7 @@
 
 PetCareHub is a pet care platform designed to connect pet owners with reliable pet caretakers. 
 
-# WebSite( (deployed by Render and Vercel)
+## WebSite (deployed by Render and Vercel)
 https://pet-care-hub.vercel.app/
 
 ## Features
@@ -27,7 +27,9 @@ https://pet-care-hub.vercel.app/
 
 3. Install dependencies:
     ```bash
+    cd api
     npm install
+    cd ..
     ```
 
 
@@ -37,4 +39,9 @@ https://pet-care-hub.vercel.app/
      ```bash
      cd api
      node app.js
+     cd ..
+     ```
+     ```bash
+     cd client
+     npm run dev
      ```
