@@ -14,11 +14,11 @@ const app = express();
 const server = http.createServer(app);
 
 
-// 使用 CORS 中间件
+// CORS middleware
 const corsOptions = {
-  origin: 'https://pet-care-hub.vercel.app', // 确保没有尾随斜杠
+  origin: 'https://pet-care-hub.vercel.app',
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // 如果需要支持 cookie
+  credentials: true,
 };
 
 app.use(cors(corsOptions));

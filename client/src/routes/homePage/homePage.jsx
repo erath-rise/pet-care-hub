@@ -22,8 +22,7 @@ function HomePage() {
                     Reliable Pet Care, Anytime
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-l dark:text-gray-400">
-                    PetCareHub connects you with trusted pet caretakers who provide secure, reliable pet care services.
-                    Enjoy peace of mind knowing your furry friends are in good hands.
+                  Welcome to PetCareHub - where pet care meets community. Our platform makes it easy to find trusted local pet sitters and dog walkers, or offer your services to fellow pet lovers.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -102,27 +101,6 @@ function HomePage() {
           </div>
         </section>
 
-        {/* Contact Us */}
-        {/* <section className="w-full py-12 md:py-24 lg:py-32">
-                <div className="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
-                    <div className="space-y-2">
-                        <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Trust Your Pets with PetCareHub</h2>
-                        <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                            Our platform connects you with a network of vetted and reliable pet caretakers, ensuring your furry
-                            friends receive the best possible care.
-                        </p>
-                    </div>
-                    <div className="flex flex-col gap-2 min-[400px]:flex-row lg:justify-end">
-                        <button>
-                            Contact Us
-                        </button>
-                        <button>
-                            Post a Care Request
-                        </button>
-                    </div>
-                </div>
-            </section> */}
-
         {/* What Our Customers Say */}
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container grid items-center justify-center gap-4 px-4 text-center md:px-6 lg:gap-10">
@@ -135,33 +113,29 @@ function HomePage() {
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               <div className="flex flex-col gap-4 rounded-lg border bg-background p-6 shadow-sm transition-shadow hover:shadow-md">
                 <blockquote className="text-lg font-semibold leading-snug">
-                  &ldquo;The customer service I received was exceptional. The support team went above and beyond to address
-                  my concerns.&rdquo;
+                  &ldquo;PetCareHub has been a lifesaver! I found a wonderful sitter for my cats when I had to travel unexpectedly. The platform is so easy to use, and I love the in-app messaging feature&rdquo;
                 </blockquote>
                 <div>
-                  <div className="font-semibold">Jules Winnfield</div>
-                  <div className="text-sm text-muted-foreground">CEO, Acme Inc</div>
+                  <div className="font-semibold">Sarah T.</div>
+                  <div className="text-sm text-muted-foreground">Pet Owner</div>
                 </div>
               </div>
               <div className="flex flex-col gap-4 rounded-lg border bg-background p-6 shadow-sm transition-shadow hover:shadow-md">
                 <blockquote className="text-lg font-semibold leading-snug">
-                  &ldquo;I recently purchased the SparkleShine Home Cleaning Robot, and it has been a game-changer in my
-                  life. I used to spend hours every weekend cleaning my house, but now I can simply turn on this little
-                  robot and let it do the work.&rdquo;
+                  &ldquo;As a dog walker, PetCareHub has helped me grow my business. The platform makes it easy to connect with pet owners in my area, and the scheduling system is fantastic!&rdquo;
                 </blockquote>
                 <div>
                   <div className="font-semibold">Sarah Johnson</div>
-                  <div className="text-sm text-muted-foreground">Homeowner, Sunny Estates</div>
+                  <div className="text-sm text-muted-foreground">Pet Caretaker</div>
                 </div>
               </div>
               <div className="flex flex-col gap-4 rounded-lg border bg-background p-6 shadow-sm transition-shadow hover:shadow-md">
                 <blockquote className="text-lg font-semibold leading-snug">
-                  &ldquo;The battery life is impressive, lasting me for long-haul flights without any issues. They are
-                  comfortable to wear for extended periods, and I appreciate the sleek design.&rdquo;
+                  &ldquo;I travel frequently for work, and PetCareHub has been a game-changer. I can easily find reliable pet sitters in different cities. It is like having a network of pet-loving friends everywhere!&rdquo;
                 </blockquote>
                 <div>
                   <div className="font-semibold">Alex Smith</div>
-                  <div className="text-sm text-muted-foreground">Frequent Flyer, Globetrotter Airlines</div>
+                  <div className="text-sm text-muted-foreground">Pet Owner</div>
                 </div>
               </div>
             </div>

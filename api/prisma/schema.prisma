@@ -32,16 +32,16 @@ model post {
 }
 
 model postDetail {
-  id         String  @id @default(auto()) @map("_id") @db.ObjectId
-  utilities  String?
-  pet        String?
-  income     String?
-  size       Int?
-  school     Int?
-  bus        Int?
-  restaurant Int?
-  post       post    @relation(fields: [postId], references: [id])
-  postId     String  @unique @db.ObjectId
+  id              String  @id @default(auto()) @map("_id") @db.ObjectId
+  utilities       String?
+  pet             String?
+  age             String?
+  gender          Int?
+  rabiesVaccine   Int?
+  healthCondition Int?
+  times           Int?
+  post            post    @relation(fields: [postId], references: [id])
+  postId          String  @unique @db.ObjectId
 }
 
 model savedPost {

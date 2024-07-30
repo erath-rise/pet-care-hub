@@ -33,11 +33,11 @@ function NewPostPage() {
     const postDetail = {
       utilities: inputs.utilities || "",
       pet: inputs.pet || "",
-      income: inputs.income || "",
-      size: parseInt(inputs.size) || 0,
-      school: parseInt(inputs.school) || 0,
-      bus: parseInt(inputs.bus) || 0,
-      restaurant: parseInt(inputs.restaurant) || 0,
+      age: inputs.age || "",
+      gender: parseInt(inputs.gender) || 0,
+      rabiesVaccine: parseInt(inputs.rabiesVaccine) || 0,
+      healthCondition: parseInt(inputs.healthCondition) || 0,
+      times: parseInt(inputs.times) || 0,
     };
 
     try {
@@ -96,20 +96,6 @@ function NewPostPage() {
               <option value="petsitting">Pet Sitting</option>
             </select>
           </div>
-            {/* <ReactQuill theme="snow" value={value} onChange={setValue} /> */}
-            {/* <input name="address" type="text" placeholder="Address" required /> */}
-            {/* <input name="city" type="text" placeholder="City" required /> */}
-            {/* <input name="type" type="text" placeholder="Type" required /> */}
-            {/* <input name="latitude" type="text" placeholder="Latitude" required /> */}
-            {/* <input name="longitude" type="text" placeholder="Longitude" required /> */}
-            {/* <UploadWidget images={images} setImages={setImages} /> */}
-            {/* <input name="utilities" type="text" placeholder="Utilities" /> */}
-            {/* <input name="pet" type="text" placeholder="Pet" /> */}
-            {/* <input name="income" type="text" placeholder="Income" /> */}
-            {/* <input name="size" type="number" placeholder="Size" /> */}
-            {/* <input name="school" type="number" placeholder="Distance to School" /> */}
-            {/* <input name="bus" type="number" placeholder="Distance to Bus Stop" /> */}
-            {/* <input name="restaurant" type="number" placeholder="Distance to Restaurant" /> */}
 
             <button type="submit" className="sendButton">Submit Post</button>
           </form>
