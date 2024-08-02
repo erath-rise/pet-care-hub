@@ -131,20 +131,21 @@ nav {
     .menu {
       position: absolute;
       top: 0;
-      right: -50%;
+      right: 0;
       background-color: black;
       color: white;
       height: 100vh;
       width: 50%;
       transition: all 1s ease;
-      display: flex;
+      // display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       font-size: 24px;
 
       &.active {
-        right: 0;
+        display: flex;
       }
 
       @include sm {
