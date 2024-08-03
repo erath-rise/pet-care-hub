@@ -9,7 +9,7 @@ PetCareHub is a pet care platform designed to connect pet owners with reliable p
 
 ## The Online WebSite URL
 https://pet-care-hub.vercel.app/
-- <img align='center' src="https://github.com/erath-rise/pet-care-hub/blob/main/screenshot.png" width="230">
+<img align='center' src="https://github.com/erath-rise/pet-care-hub/blob/main/screenshot.png">
 
 ## Features
 
